@@ -8,6 +8,10 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
+  {
+    path:"",
+    component:UsersComponent
+  },
 {
   path:'users',
   component:UsersComponent
