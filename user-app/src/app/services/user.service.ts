@@ -28,7 +28,7 @@ export class UserService {
     return this.http.get(this.baseUrl + '/' + id);
   }
 
-    addUser(user: UserDetail):void {
+    addUser(user: UserDetail): void {
       this.http.post(this.baseUrl, {
           user: user,
         })
@@ -46,7 +46,7 @@ export class UserService {
         });
     }
 
-    deleteUser(id: number):void{
+    deleteUser(id: number): void{
       this.http.delete(this.baseUrl + '/' + id).subscribe({
         next: (response) => {
           this.users = JSON.parse(localStorage.getItem('users')) || [];
