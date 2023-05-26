@@ -1,6 +1,36 @@
-<h2>
+<app-header
+  [title]="name"
+  (changeValue)="changeName()"
+/>
+<!--<app-user-list />-->
+<router-outlet />
+
+
+
+<!-- <h2 *ngIf="show">
   Congratulations! Angular set up is complete.
   <br />
   <br />
-  You are ready to begin the workshop3.
+  Hello I am {{ name }} and I am an Angular Developer.
 </h2>
+
+<h2 *ngFor="let item of names">
+  {{ item }}
+</h2>
+
+<span [ngStyle]="{color: isError ? 'red' : 'green'}">
+  This is a {{ isError ? 'error' : 'success'}}
+</span>
+<br />
+<span [ngClass]="[isError ? 'error' : 'normal']">
+  This is a text
+</span>
+<br />
+<button (click)="changeName()">Change name</button>
+
+ -->
+ <!-- <input
+  type="text"
+  placeholder="user name"
+  [(ngModel)]="username"
+> -->
