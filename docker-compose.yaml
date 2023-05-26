@@ -10,6 +10,6 @@ services:
         volumes:
             - ./user-app:/home/uca_user/user-app
             - /home/uca_user/user-app/node_modules
-        command: sh -c "ng serve --host 0.0.0.0"
+        command: npm run start
         ports:
             - 4200:4200
