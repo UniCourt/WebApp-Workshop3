@@ -7,4 +7,25 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent {}
+export class UserListComponent {
+//   users:User[]=[
+//   {
+//     name:'Arun',
+//     city:'asf',
+//     emailId:'arun@gmail.com',
+//     id:1,
+//   },
+//   {
+//     name:'Varun',
+//     city:'safg',
+//     emailId:'varun@gmail.com',
+//     id:1,
+//   }
+// ]
+constructor(public userService:UserService){}
+
+
+ngOnInit(){
+  this.userService.getUsers();
+}
+}
