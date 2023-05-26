@@ -1,9 +1,10 @@
 .user-card {
   padding: 10px;
   margin: 5px;
-  border: solid 1px rgb(83, 163, 168);
+  border: solid 1px /*rgb(83, 163, 168)*/ rgb(5, 244, 101);
   width: 200px;
-  height: 200px;
+  height: 220px;
+  border-radius: 18px;
 }
 
 .user-card > label {
