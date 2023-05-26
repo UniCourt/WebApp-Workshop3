@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/model/common.dto';
+import { User, UserDetail } from 'src/app/model/common.dto';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,4 +7,25 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent {}
+export class UserListComponent {
+  users: User[] = [
+    {
+      id: 1,
+      name: 'Leanne Graham',
+      emailId: 'abcd@gmail.com',
+      city: 'Gwenborough',
+    },
+    {
+      id: 2,
+      name: 'Leanne Graham',
+      emailId: 'abcd@gmail.com',
+      city: 'Gwenborough',
+    }
+  ];
+
+  constructor(public userService: UserService) {}
+
+  ngOnInit() {
+    this.userService.getUsers();
+  }
+}
