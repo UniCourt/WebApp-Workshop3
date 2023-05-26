@@ -1,6 +1,28 @@
-<h2>
+<!-- <h2 *ngIf="show">
   Congratulations! Angular set up is complete.
   <br />
   <br />
-  You are ready to begin the workshop3.
+  HII IM {{name}} ANGULAR DEVELOPER
+
 </h2>
+
+
+<h2 *ngFor="let item of names">
+  {{ item }}
+
+
+</h2>
+
+<span [ngStyle]="{ color: isError ? 'red': 'green'}">THIS IS THE TEXT</span>
+<span [ngClass]="[ isError ? 'error':'normal']">THIS IS THE TEXT</span>
+<button (click)=changeName()>CHANGE NAME</button>
+<input text="type" placeholder="User name"  [(ngModel)]="username"/> -->
+<app-header>
+
+  [title]="name" (changeValue)="changeName()"
+</app-header>
+
+
+<router-outlet></router-outlet>
+
+
