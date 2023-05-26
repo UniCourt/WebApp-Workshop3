@@ -1,3 +1,10 @@
 <div class="container">
   <p>User List Works</p>
+  <app-user-card
+    *ngFor="let item of users"
+    [id]="item.id"
+    [name]="item.name"
+    [city]="item.city"
+    [emailId]="item.emailId"
+  ></app-user-card>
 </div>
