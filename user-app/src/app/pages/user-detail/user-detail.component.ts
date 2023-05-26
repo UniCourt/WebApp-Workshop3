@@ -7,4 +7,21 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'],
 })
-export class UserDetailComponent {}
+export class UserDetailComponent {
+  userDetail: UserDetail = {
+    id: this.userService.userId,
+    name: '',
+    city: '',
+    companyName: '',
+    emailId: '',
+    phoneNumber: '',
+    street: '',
+    zipCode: '',
+  };
+  
+  hasError: boolean = false;
+  
+  constructor(private userService: UserService) {}
+  
+  
+}
