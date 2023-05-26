@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, UserDetail } from '../model/common.dto';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +10,18 @@ export class UserService {
   userId: number;
   users: User[] = [];
 
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
   userAleadyAdded(): boolean {
     return true;
   }
 
-  getUsers(): void {}
+  getUsers() {
+     this.http.get(this.baseUrl).subscribe((user:User[])=>{
+    console.log(user);
+    this.users=user;
+  })
+  }
 
   getUserDetail(id: number) {}
 

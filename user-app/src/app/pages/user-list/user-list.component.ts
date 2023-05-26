@@ -7,4 +7,27 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent {}
+export class UserListComponent {
+  users:User[]=[
+    {
+    name:'Ashin',
+    city:'asdc',
+    emailId:'ashinvarghese@gmail.com',
+    id:1,
+  }
+  ]
+  constructor(public userService: UserService) {}
+
+ngOnInit() {
+  this.userService.getUsers();
+  if(!this.userService.userAleadyAdded())
+  {
+
+    this.userService.getUsers();
+  }
+}
+
+deleteUser(event) {
+  this.userService.deleteUser(event)
+}
+}
