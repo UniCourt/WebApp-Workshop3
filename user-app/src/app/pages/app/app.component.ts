@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  name: string="ayush";
+  name: string="Bhavish";
 
   show: boolean=false;
 
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   changename(){
-    // this.name="steve";
+    this.name="Bhavish";
     console.log(this.name=this.userName);
   }
 

@@ -2,9 +2,9 @@
   <label>{{ name }}</label> <br /><br/>
   <span>{{ emailId }}</span> <br /> <br>
   <span>{{ city }}</span> <br />
-  <button class="detail-btn" routerLink="user-detail">
+  <button class="detail-btn" routerLink="/user-detail" (click)="setUserId(id)">
     DETAIL
   </button>
-  <button class="delete-btn" >DELETE</button>
+  <button class="delete-btn" (click)="deleteUserById(id)">DELETE</button>
 </div>
 
