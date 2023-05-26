@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, UserDetail } from '../model/common.dto';
+import { H}
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,23 @@ export class UserService {
     return true;
   }
 
-  getUsers(): void {}
+  getUsers(){
+    this.users = [
+      {
+        name : 'Arun',
+        city: 'Mangalore',
+        emailId : 'arunk@unicourt.com',
+        id: 1
+      },
+      {
+        name : 'Mark',
+        city: 'New York',
+        emailId : 'mark92@unicourt.com',
+        id: 2
+      }
+    ]
+    return this.users;
+  }
 
   getUserDetail(id: number) {}
 
