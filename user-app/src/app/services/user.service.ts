@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User, UserDetail } from '../model/common.dto';
+import {HttpClient} from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +11,74 @@ export class UserService {
   userId: number;
   users: User[] = [];
 
-  constructor() {}
-
-  userAleadyAdded(): boolean {
-    return true;
+  router
+  constructor(private http: HttpClient) {
   }
 
-  getUsers(): void {}
+  userAleadyAdded(): boolean {
+    this.users = JSON.parse(localStorage.getItem('users')) || [];
+    return this.users.length == 0 ? false : true;
+  }
 
-  getUserDetail(id: number) {}
+  getUsers(): void {
+      this.users = [];
+      this.http.get(this.baseUrl).subscribe({
+        next: (response: any) => {
+          let tempUser = [];
+          response.forEach((element) => {
+            let user: User = {
+              id: element.id,
+              name: element.name,
+              city: element.address.city,
+              emailId: element.email,
+            };
+            tempUser.push(user)
+          });
 
-  addUser(user: UserDetail): void {}
+          localStorage.setItem("users",JSON.stringify(tempUser));
+          this.users =  JSON.parse(localStorage.getItem("users")) || [];
+        },
+        error: (err) => {
+          console.log('error', err);
+        },
+      });
+    }
 
-  deleteUser(id: number): void {}
+    getUserDetail(id: number): Observable<any> {
+      return this.http.get(this.baseUrl + '/' + id);
+    }
+
+    addUser(user: UserDetail): void {
+      this.http
+        .post(this.baseUrl, {
+          user: user,
+        })
+        .subscribe({
+          next: (response) => {
+            this.users = JSON.parse(localStorage.getItem('users')) || [];
+            this.users.push(user);
+            localStorage.setItem('users', JSON.stringify(this.users));
+            alert('User added successfully');
+            this.router.navigateByUrl('/');
+          },
+          error: (error) => {
+            console.log('add user error', error);
+          },
+        });
+    }
+
+   deleteUser(id: number): void {
+    this.http.delete(this.baseUrl + '/' + id).subscribe({
+      next: (response) => {
+        this.users = JSON.parse(localStorage.getItem('users')) || [];
+        this.users = this.users.filter((user) => user['id'] != id);
+        localStorage.setItem('users', JSON.stringify(this.users));
+        this.users = JSON.parse(localStorage.getItem('users')) || [];
+        alert('User delete successfully');
+      },
+      error: (error) => {
+        console.log('delete user error', error);
+      },
+    });
+ }
 }
