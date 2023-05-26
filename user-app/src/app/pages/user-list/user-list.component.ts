@@ -7,4 +7,18 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent {}
+export class UserListComponent {
+  //   users: User[] = [
+  //     {
+  //       name: 'Arun',
+  //       city: 'sdsd',
+  //       emailId: 'arunk@unicourt.com',
+  //       id: 1,
+  //     },
+  //   ];
+  // }
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    this.userService.getUsers();
+  }
+}
