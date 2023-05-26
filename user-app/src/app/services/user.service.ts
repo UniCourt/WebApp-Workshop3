@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { User, UserDetail } from '../model/common.dto';
 
@@ -7,17 +8,28 @@ import { User, UserDetail } from '../model/common.dto';
 export class UserService {
   baseUrl: string = 'https://jsonplaceholder.typicode.com/users';
   userId: number;
-  users: User[] = [];
+  users :any= [];
+  constructor(private http:HttpClient) {
 
-  constructor() {}
+  }
 
   userAleadyAdded(): boolean {
     return true;
   }
 
-  getUsers(): void {}
+  getUsers(): void {
+    this.users = this.http.get(this.baseUrl).subscribe((res) =>{
+        console.log(res);
+        this.users = res;
 
-  getUserDetail(id: number) {}
+    });
+
+  }
+
+    getUserDetail(id: number) {
+      return this.http.get(this.baseUrl + '/' + id);
+    }
+
 
   addUser(user: UserDetail): void {}
 
