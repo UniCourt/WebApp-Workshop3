@@ -16,6 +16,7 @@ export class LogInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const requestCopy = request.clone();
+    console.log('Request URL:');
     return next.handle(requestCopy);
   }
 }
